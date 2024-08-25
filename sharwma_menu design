@@ -1,0 +1,44 @@
+menu = {
+    'falafal': 50,
+    'with rice': 30,
+    'with poutine': 20,
+}
+
+toppings = {
+    'onion': 2,
+    'cucumber': 1.49,
+    'corns': 3.49,
+}
+
+print("How would you like your shawarma today?")
+print("Options:")
+print("  Falafal: $50")
+print("  With rice: $30")
+print("  With poutine: $20")
+
+shawrma_choice = input("Select your style: ")
+
+print("Choose your favorite toppings for today:")
+print("  Onion: $2")
+print("  Cucumber: $1.49")
+print("  Corns: $3.49")
+
+topping_choice = input("Select your toppings (comma-separated): ")
+
+order_total = 0
+
+if shawrma_choice in menu:
+    order_total += menu[shawrma_choice]
+    print(f"Your item {shawrma_choice} added to the order.")
+else:
+    print(f"Sorry, {shawrma_choice} is out of stock.")
+
+topping_choices = [t.strip() for t in topping_choice.split(",")]
+for topping in topping_choices:
+    if topping in toppings:
+        order_total += toppings[topping]
+        print(f"Your item {topping} added to the order.")
+    else:
+        print(f"Sorry, {topping} is out of stock.")
+
+print(f"Your total order cost is: ${order_total:.2f}")
